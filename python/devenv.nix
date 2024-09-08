@@ -2,7 +2,7 @@
 
 {
   env.PROJECT_NAME = "example";  # specify your project name
-  env.PYTHON_VERSION = "3.10";  # specify your python version
+  env.PYTHON_VERSION = "3.12";  # specify your python version
 
   packages = with pkgs; [
     fzf
