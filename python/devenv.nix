@@ -9,18 +9,26 @@
     fd
   ];
 
-  scripts.init.exec = ''
+  scripts.wake.exec = ''
+    set -e
+
     pyenv install -s $PYTHON_VERSION
     pyenv local $PYTHON_VERSION
     pyenv version
-    pyenv virtualenv $PROJECT_NAME
+    pyenv virtualenv $PROJECT_NAME || true
     echo "$PROJECT_NAME" > .python-version
-  '';
+    source $(pyenv root)/versions/$PROJECT_NAME/bin/activate
 
-  scripts.install.exec = ''
     pip install --upgrade pip
     pip install poetry
-    poetry install
+
+    if [ -f "pyproject.toml" ]; then
+        echo "pyproject.toml found. Running poetry install..."
+        poetry install
+    else
+        echo "pyproject.toml not found. Running poetry init..."
+        poetry init
+    fi
   '';
 
   scripts.run-test.exec = ''
