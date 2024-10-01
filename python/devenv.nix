@@ -1,8 +1,7 @@
 { pkgs, lib, config, inputs, ... }:
 
 {
-  env.PROJECT_NAME = "example";  # specify your project name
-  env.PYTHON_VERSION = "3.12";  # specify your python version
+  env.PYTHON_VERSION = "3.12";  # specify your python version here
 
   packages = with pkgs; [
     fzf
@@ -11,6 +10,8 @@
 
   scripts.wake.exec = ''
     set -e
+
+    PROJECT_NAME=$(basename "$DEVENV_ROOT")
 
     pyenv install -s $PYTHON_VERSION
     pyenv local $PYTHON_VERSION
