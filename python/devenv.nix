@@ -25,6 +25,7 @@
 
     if [ -f "pyproject.toml" ]; then
         echo "pyproject.toml found. Running poetry install..."
+        poetry lock
         poetry install
     else
         echo "pyproject.toml not found. Running poetry init..."
