@@ -2,6 +2,7 @@
 
 {
   env.PYTHON_VERSION = "3.12";  # specify your python version here
+  env.FZF_DEFAULT_COMMAND = "fd --type f --strip-cwd-prefix";
 
   packages = with pkgs; [
     fzf
