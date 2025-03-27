@@ -1,3 +1,3 @@
-# devenv-templates
+# flakes
 
-devenv nix templates
+my flakes
