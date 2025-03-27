@@ -11,7 +11,7 @@
   scripts.wake.exec = ''
     set -e
 
-    PROJECT_NAME=$(basename "$DEVENV_ROOT")
+    PROJECT_NAME=$(basename "$DEVENV_ROOT")-$PYTHON_VERSION
 
     pyenv install -s $PYTHON_VERSION
     pyenv local $PYTHON_VERSION
