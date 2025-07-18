@@ -1,0 +1,11 @@
+((go-mode . ((eval . (let* ((project-root (->> ".dir-locals.el"
+                                               (locate-dominating-file default-directory)
+                                               (file-truename)))
+                            (gopath (concat project-root ".go"))
+                            (path (->> (or (getenv "PATH") "")
+                                       (s-split ":")
+                                       (append (list (f-join gopath "bin")) exec-path)
+                                       (seq-uniq))))
+                       (setenv "GOPATH" gopath)
+                       (setenv "PATH" (s-join ":" path))
+                       (setq exec-path path))))))
