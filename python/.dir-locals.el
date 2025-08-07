@@ -1,0 +1,21 @@
+;;; Directory Local Variables            -*- no-byte-compile: t -*-
+;;; For more information see (info "(emacs) Directory Variables")
+
+((nil . ((eval . (my-direnv))))
+ (python-mode . ((eval . (progn
+                           (my-direnv)
+                           (when-let (venv (f-join (locate-dominating-file default-directory ".venv") ".venv"))
+                             (pyvenv-activate venv))
+                           (add-hook #'eglot-connect-hook #'mise--update 0 t)
+                           (company-mode)
+                           (eglot-ensure)
+                           (flycheck-mode)
+                           (flymake-mode)
+                           (yas-minor-mode)
+                           (subword-mode)
+                           (smartparens-strict-mode)
+                           (python-highlight-breakpoints)
+                           (company-quickhelp-mode)
+                           (abbrev-mode)))
+                 (company-backends . (company-files (company-capf :with company-yasnippet)
+                                                    company-dabbrev-code)))))
