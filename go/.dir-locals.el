@@ -3,6 +3,7 @@
 
 ;; go install golang.org/x/tools/cmd/goimports@latest
 ;; go install golang.org/x/tools/gopls@latest
+;; go install -v github.com/rogpeppe/godef@master
 
 ((nil . ((eval . (let* ((project-root (->> ".dir-locals.el" (locate-dominating-file default-directory) (file-truename)))
                         (gopath (concat project-root ".go"))
