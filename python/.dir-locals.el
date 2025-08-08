@@ -14,8 +14,6 @@
                            (require 'company-quickhelp)
                            (require 'smartparens)
 
-                           (when-let (venv (f-join (locate-dominating-file default-directory ".venv") ".venv"))
-                             (pyvenv-activate venv))
                            (add-hook #'eglot-connect-hook #'mise--update 0 t)
                            (eglot-ensure)
                            (company-mode)
