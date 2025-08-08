@@ -3,6 +3,17 @@
 
 ((nil . ((eval . (my-direnv))))
  (python-mode . ((eval . (progn
+                           (require 'pyvenv)
+                           (require 'eglot)
+                           (require 'company)
+                           (require 'flycheck)
+                           (require 'flymake)
+                           (require 'yasnippet)
+                           (require 'subword)
+                           (require 'abbrev)
+                           (require 'company-quickhelp)
+                           (require 'smartparens)
+
                            (when-let (venv (f-join (locate-dominating-file default-directory ".venv") ".venv"))
                              (pyvenv-activate venv))
                            (add-hook #'eglot-connect-hook #'mise--update 0 t)
